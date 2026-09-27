@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Prompt Lab — AI untuk Komunikasi Digital</title>
+  <meta name="description" content="Lembar praktik interaktif untuk kegiatan AI, media digital, dan generasi muda.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1739'/%3E%3Cpath d='M17 18h30v22H31l-9 7v-7h-5z' fill='%23ffcb45'/%3E%3Cpath d='M24 26h16M24 32h11' stroke='%230b1739' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root{--navy:#0b1739;--blue:#2357d9;--sky:#e8f0ff;--yellow:#ffcb45;--ink:#18223b;--muted:#65708a;--paper:#f5f7fb;--white:#fff;--line:#dce2ee;--good:#177a56;--shadow:0 16px 44px rgba(11,23,57,.10)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,a,input,textarea{font:inherit}.shell{max-width:1180px;margin:auto;padding:0 22px}.top{position:sticky;top:0;z-index:20;background:rgba(245,247,251,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topin{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;color:var(--navy)}.mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--yellow)}.nav{display:flex;gap:8px;align-items:center}.nav a{color:var(--ink);text-decoration:none;padding:8px 11px;border-radius:9px;font-weight:650;font-size:.9rem}.nav a:hover{background:var(--white)}
+    .hero{padding:54px 0 26px}.hero-grid{display:grid;grid-template-columns:1.45fr .75fr;gap:24px;align-items:stretch}.hero-main{background:var(--navy);color:white;border-radius:28px;padding:38px;position:relative;overflow:hidden}.hero-main:after{content:"";position:absolute;width:260px;height:260px;border:46px solid rgba(255,203,69,.13);border-radius:50%;right:-100px;top:-90px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:var(--yellow);font-size:.76rem}.hero h1{font-size:clamp(2rem,5vw,4.1rem);line-height:1.02;letter-spacing:-.05em;margin:12px 0 18px;max-width:750px}.hero p{max-width:700px;color:#ced8f4;margin:0;font-size:1.05rem}.start{display:inline-flex;margin-top:24px;background:var(--yellow);color:var(--navy);text-decoration:none;font-weight:850;padding:12px 17px;border-radius:12px}.timer{background:white;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}.timer label{font-weight:800}.clock{font-variant-numeric:tabular-nums;font-size:3.3rem;font-weight:900;letter-spacing:-.06em;color:var(--navy);margin:12px 0}.timer-controls{display:flex;gap:8px;flex-wrap:wrap}.timer button,.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:780;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:var(--sky);color:var(--blue)}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0 42px}.step{background:white;border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:700;font-size:.9rem}.step b{display:block;color:var(--blue);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:28px 0 17px}.section-head h2{font-size:clamp(1.7rem,3vw,2.45rem);letter-spacing:-.035em;line-height:1.1;margin:0;color:var(--navy)}.section-head p{margin:0;color:var(--muted);max-width:520px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.chip{background:white;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:8px 13px;cursor:pointer;font-weight:700}.chip.active{background:var(--navy);color:white;border-color:var(--navy)}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 26px rgba(11,23,57,.055)}.card-head{padding:20px 22px 14px;display:flex;gap:14px;align-items:flex-start}.num{flex:0 0 auto;width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--sky);color:var(--blue);font-weight:900}.card h3{margin:0;color:var(--navy);font-size:1.22rem}.meta{color:var(--muted);font-size:.87rem}.prompt{margin:0 22px;background:#f8faff;border:1px solid #dce5f9;border-radius:13px;padding:16px;white-space:pre-wrap;max-height:255px;overflow:auto;font:14px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;color:#263453}.actions{display:flex;gap:8px;flex-wrap:wrap;padding:14px 22px 20px}.actions a{text-decoration:none}.copy.done{background:var(--good)}
+    .work{margin:48px 0;background:linear-gradient(135deg,#eef3ff,#fff);border:1px solid #d5def4;border-radius:24px;padding:28px}.work-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:26px}.work h2{margin:0 0 8px;color:var(--navy);font-size:2rem}.work p{color:var(--muted)}.field{margin-bottom:12px}.field label{display:block;font-weight:750;margin-bottom:5px}.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:white;color:var(--ink)}.field textarea{min-height:105px;resize:vertical}.submit-actions{display:flex;gap:8px;flex-wrap:wrap}.notice{margin-top:12px;color:var(--good);font-weight:700;min-height:24px}.tips{margin:0 0 52px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tip{border-top:4px solid var(--yellow);background:white;border-radius:14px;padding:18px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.tip h3{margin:0 0 5px;color:var(--navy)}footer{background:var(--navy);color:#d5def4;padding:26px 0;margin-top:30px}footer .shell{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}footer strong{color:white}
+    .toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);transform:translateY(110px);opacity:0;transition:.22s;z-index:30}.toast.show{transform:none;opacity:1}
+    @media(max-width:820px){.nav{display:none}.hero-grid,.cards,.work-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.hero-main{padding:28px}.timer{min-height:220px}.section-head{display:block}.section-head p{margin-top:8px}.tips{grid-template-columns:1fr}}
+    @media(max-width:480px){.shell{padding:0 14px}.hero{padding-top:26px}.hero-main{border-radius:20px}.steps{grid-template-columns:1fr}.actions .btn,.actions a{flex:1;text-align:center}.clock{font-size:2.7rem}}
+    .techniques{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:42px}.tech{background:white;border:1px solid var(--line);border-radius:17px;padding:18px}.tech strong{display:block;color:var(--navy);font-size:1.04rem;margin-bottom:4px}.tech p{margin:0;color:var(--muted);font-size:.93rem}.tech .example{display:block;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--blue);font-size:.86rem;font-weight:700}.tech.featured{grid-column:span 2;background:var(--navy);border-color:var(--navy)}.tech.featured strong{color:white}.tech.featured p{color:#ced8f4}.tech.featured .example{color:var(--yellow);border-color:rgba(255,255,255,.17)}.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.tag{display:inline-flex;background:#edf2ff;color:#3159b6;border-radius:999px;padding:3px 8px;font-size:.72rem;font-weight:800}.concept-note{background:#fff8de;border:1px solid #f0d77b;border-radius:14px;padding:14px 16px;margin:-3px 0 20px;color:#5c4a0f}
+    @media(max-width:820px){.techniques{grid-template-columns:1fr 1fr}.tech.featured{grid-column:span 2}}@media(max-width:480px){.techniques{grid-template-columns:1fr}.tech.featured{grid-column:span 1}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="shell topin"><div class="brand"><span class="mark">✦</span> Prompt Lab</div><nav class="nav"><a href="#teknik">Teknik Prompt</a><a href="#prompt">Praktik</a><a href="#lembar">Lembar Kerja</a><a href="#panduan">Panduan</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="shell hero-grid">
+      <div class="hero-main"><div class="eyebrow">Praktik AI untuk komunikasi digital</div><h1>Salin. Jalankan. Nilai. Perbaiki.</h1><p>Gunakan AI sebagai rekan kerja awal—kemudian periksa fakta, konteks, nada, dan dampaknya sebelum menerima hasil.</p><a class="start" href="#prompt">Mulai praktik →</a></div>
+      <aside class="timer"><div><label for="minutes">Timer praktik</label><div class="clock" id="clock">10:00</div></div><div class="timer-controls"><button class="primary" id="timerToggle">Mulai</button><button class="secondary" id="timerReset">Ulangi</button><button class="secondary" id="timerFive">5 menit</button></div></aside>
+    </div></section>
+    <div class="shell"><div class="steps"><div class="step"><b>Langkah 1</b>Pilih aktivitas</div><div class="step"><b>Langkah 2</b>Salin prompt</div><div class="step"><b>Langkah 3</b>Buka aplikasi AI</div><div class="step"><b>Langkah 4</b>Nilai dan revisi</div><div class="step"><b>Langkah 5</b>Kirim hasil</div></div></div>
+
+    <section class="shell" id="teknik"><div class="section-head"><div><div class="eyebrow" style="color:var(--blue)">Insight singkat</div><h2>Kenali teknik di balik prompt</h2></div><p>Teknik prompting bukan rumus kaku. Anggap sebagai cara memberi arahan kerja yang lebih jelas kepada AI.</p></div>
+      <div class="concept-note"><strong>Rumus praktis:</strong> peran + konteks + tugas + format keluaran + batasan + pemeriksaan. Tidak semua prompt harus memakai seluruh unsur.</div>
+      <div class="techniques">
+        <article class="tech"><strong>Role prompting</strong><p>Menentukan sudut pandang atau profesi yang harus digunakan AI.</p><span class="example">“Anda berperan sebagai analis audiens.”</span></article>
+        <article class="tech"><strong>Zero-shot prompting</strong><p>Memberikan instruksi langsung tanpa contoh jawaban sebelumnya.</p><span class="example">Cocok untuk tugas sederhana dan eksplorasi awal.</span></article>
+        <article class="tech"><strong>Few-shot prompting</strong><p>Memberikan 2–3 contoh agar AI mengikuti pola, nada, atau format yang diinginkan.</p><span class="example">Misalnya, dua caption sesuai gaya organisasi.</span></article>
+        <article class="tech"><strong>Context prompting</strong><p>Memberikan latar, audiens, kanal, tujuan, dan fakta yang boleh digunakan.</p><span class="example">Membantu hasil tetap relevan dengan kasus.</span></article>
+        <article class="tech"><strong>Structured prompting</strong><p>Menentukan bentuk hasil seperti tabel, storyboard, daftar, atau batas jumlah kata.</p><span class="example">Memudahkan hasil dibandingkan dan dinilai.</span></article>
+        <article class="tech"><strong>Constraint prompting</strong><p>Menetapkan larangan dan batas, misalnya tidak membuat data atau tautan baru.</p><span class="example">Mengurangi keluaran yang tidak sesuai kebutuhan.</span></article>
+        <article class="tech featured"><strong>Decomposition / step-by-step prompting</strong><p>Memecah pekerjaan kompleks menjadi langkah kecil atau meminta alasan ringkas yang dapat diperiksa. Teknik ini sering dikaitkan dengan Chain-of-Thought (CoT), tetapi dalam praktik cukup minta tahapan, kriteria, atau ringkasan alasan—bukan proses berpikir internal AI.</p><span class="example">“Analisis kebutuhan, susun pesan, lalu periksa risiko salah tafsir.”</span></article>
+        <article class="tech"><strong>Critique &amp; reflection prompting</strong><p>Meminta AI menilai kembali hasilnya berdasarkan kriteria yang jelas.</p><span class="example">“Tandai klaim yang masih perlu diverifikasi.”</span></article>
+      </div>
+    </section>
+
+    <section class="shell" id="prompt"><div class="section-head"><div><div class="eyebrow" style="color:var(--blue)">Pilih aktivitas</div><h2>Prompt siap digunakan</h2></div><p>Ganti bagian di dalam tanda kurung siku bila diminta. Jangan masukkan data pribadi atau dokumen internal.</p></div>
+      <div class="filters"><button class="chip active" data-filter="all">Semua</button><button class="chip" data-filter="analisis">Analisis</button><button class="chip" data-filter="pesan">Pesan</button><button class="chip" data-filter="kreatif">Kreatif</button><button class="chip" data-filter="karier">Karier</button></div>
+      <div class="cards">
+        <article class="card" data-cat="analisis"><div class="card-head"><span class="num">01</span><div><h3>Analisis komentar audiens</h3><div class="meta">Analisis · 8–10 menit</div><div class="tag-row"><span class="tag">Role</span><span class="tag">Zero-shot</span><span class="tag">Structured</span><span class="tag">Constraint</span></div></div></div><pre class="prompt">Anda berperan sebagai audience insight analyst.
+
+Analisis komentar berikut berdasarkan kebutuhan komunikasi audiens. Jangan hanya mengelompokkan menjadi positif dan negatif.
+
+Komentar:
+1. “Videonya menarik, tetapi saya belum paham harus mendaftar di mana.”
+2. “Akhirnya ada penjelasan yang tidak menggurui.”
+3. “Katanya gratis, mengapa ada biaya administrasi?”
+4. “Sumber angka dalam poster ini dari mana?”
+5. “Apakah kegiatan ini hanya untuk mahasiswa semester akhir?”
+
+Buat tabel dengan kolom:
+1. Kelompok kebutuhan audiens
+2. Komentar yang menjadi bukti
+3. Informasi yang belum tersedia
+4. Respons komunikasi yang disarankan
+5. Tingkat keyakinan analisis
+
+Jangan menyimpulkan karakteristik seluruh mahasiswa karena datanya terbatas.</pre><div class="actions"><button class="btn primary copy">Salin prompt</button><a class="btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a><a class="btn secondary" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini ↗</a></div></article>
+        <article class="card" data-cat="pesan"><div class="card-head"><span class="num">02</span><div><h3>Satu fakta, tiga audiens</h3><div class="meta">Pesan · 8 menit</div><div class="tag-row"><span class="tag">Role</span><span class="tag">Context</span><span class="tag">Constraint</span><span class="tag">Reflection</span></div></div></div><pre class="prompt">Anda adalah staf komunikasi universitas.
+
+Fakta utama:
+- Informasi beasiswa resmi hanya diumumkan melalui situs universitas.
+- Universitas tidak meminta biaya pendaftaran.
+- Mahasiswa perlu menghubungi bagian kemahasiswaan jika ragu.
+
+Buat tiga versi pesan untuk:
+1. Mahasiswa baru melalui Instagram
+2. Orang tua melalui WhatsApp
+3. Organisasi mahasiswa melalui email
+
+Pertahankan fakta yang sama. Sesuaikan nada, panjang pesan, ajakan bertindak, dan format kanal. Jangan membuat tautan atau nomor kontak baru. Setelah itu, jelaskan alasan perbedaan ketiga pesan.</pre><div class="actions"><button class="btn primary copy">Salin prompt</button><a class="btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a><a class="btn secondary" href="https://claude.ai/" target="_blank" rel="noopener">Claude ↗</a></div></article>
+        <article class="card" data-cat="kreatif"><div class="card-head"><span class="num">03</span><div><h3>Kampanye multimodal</h3><div class="meta">Kreatif · 10–12 menit</div><div class="tag-row"><span class="tag">Context</span><span class="tag">Structured</span><span class="tag">Decomposition</span><span class="tag">Constraint</span></div></div></div><pre class="prompt">Buat konsep video vertikal 30 detik untuk mahasiswa.
+
+Tema: Jeda Sebelum Membagikan.
+Tujuan: mengajak mahasiswa memeriksa informasi sebelum meneruskannya.
+Nada: dekat dengan mahasiswa, tidak menggurui.
+
+Hasilkan:
+1. Hook lima detik
+2. Storyboard enam shot
+3. Voice-over 65–75 kata
+4. Teks pada layar
+5. Caption Instagram
+6. Ajakan bertindak
+7. Daftar klaim yang harus diverifikasi
+
+Jangan menambahkan statistik atau sumber yang tidak diberikan.</pre><div class="actions"><button class="btn primary copy">Salin prompt</button><a class="btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a><a class="btn secondary" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini ↗</a></div></article>
+        <article class="card" data-cat="karier"><div class="card-head"><span class="num">04</span><div><h3>Tugas akhir menjadi portofolio</h3><div class="meta">Karier · 8 menit</div><div class="tag-row"><span class="tag">Role</span><span class="tag">Context</span><span class="tag">Structured</span><span class="tag">Constraint</span></div></div></div><pre class="prompt">Bertindak sebagai perekrut untuk posisi junior communication strategist.
+
+Berdasarkan abstrak tugas akhir berikut, bantu saya mengubahnya menjadi deskripsi proyek portofolio.
+
+[TEMPELKAN ABSTRAK TANPA DATA SENSITIF]
+
+Susun menjadi:
+1. Masalah komunikasi
+2. Audiens atau pihak yang diteliti
+3. Metode pengumpulan data
+4. Peran pribadi saya
+5. Temuan utama
+6. Rekomendasi
+7. Keterampilan yang dapat diterapkan di dunia kerja
+8. Dua pertanyaan kritis yang mungkin diajukan perekrut
+
+Jangan menambahkan hasil, angka, atau pengalaman yang tidak terdapat dalam abstrak.</pre><div class="actions"><button class="btn primary copy">Salin prompt</button><a class="btn secondary" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT ↗</a><a class="btn secondary" href="https://claude.ai/" target="_blank" rel="noopener">Claude ↗</a></div></article>
+      </div>
+    </section>
+
+    <section class="shell" id="lembar"><div class="work"><div class="work-grid"><div><div class="eyebrow" style="color:var(--blue)">Lembar kerja kelompok</div><h2>Catat keputusan manusia</h2><p>Jangan hanya menempelkan keluaran AI. Tunjukkan bagian yang diperiksa, masalah yang ditemukan, dan alasan revisinya.</p><div class="tip"><h3>Format pengumpulan</h3><div>Nama kelompok · AI yang digunakan · kekuatan · kekurangan · revisi manusia · pesan final</div></div></div><form id="worksheet"><div class="field"><label for="group">Nama kelompok</label><input id="group" placeholder="Contoh: Kelompok 3"></div><div class="field"><label for="tool">AI yang digunakan</label><input id="tool" placeholder="Contoh: ChatGPT"></div><div class="field"><label for="review">Kekuatan dan kekurangan output</label><textarea id="review" placeholder="Apa yang sudah baik? Apa yang keliru, kurang tepat, atau perlu diverifikasi?"></textarea></div><div class="field"><label for="revision">Revisi manusia / pesan final</label><textarea id="revision" placeholder="Tuliskan hasil yang sudah diperbaiki kelompok."></textarea></div><div class="submit-actions"><button type="button" class="btn primary" id="copyWork">Salin hasil kelompok</button><button type="reset" class="btn secondary">Kosongkan</button></div><div class="notice" id="workNotice" aria-live="polite"></div></form></div></div></section>
+
+    <section class="shell" id="panduan"><div class="section-head"><div><div class="eyebrow" style="color:var(--blue)">Sebelum mengirim</div><h2>Tiga pemeriksaan penting</h2></div></div><div class="tips"><div class="tip"><h3>Fakta</h3><div>Adakah data, tautan, nama, atau angka yang dibuat tanpa sumber?</div></div><div class="tip"><h3>Konteks</h3><div>Apakah nada, kanal, dan ajakan bertindak sesuai dengan audiens?</div></div><div class="tip"><h3>Dampak</h3><div>Adakah risiko privasi, bias, salah tafsir, atau kerugian bagi pihak lain?</div></div></div></section>
+  </main>
+  <footer><div class="shell"><div><strong>Prompt Lab</strong><br>AI, Media Digital, dan Generasi Muda</div><div>Gunakan AI secara kritis, aman, dan bertanggung jawab.</div></div></footer>
+  <div class="toast" id="toast" role="status">Prompt berhasil disalin</div>
+  <script>
+    const toast=document.querySelector('#toast');
+    function showToast(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}
+    async function copyText(text){try{await navigator.clipboard.writeText(text);return true}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();return ok}}
+    document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{const text=btn.closest('.card').querySelector('.prompt').innerText;await copyText(text);const old=btn.textContent;btn.textContent='Tersalin ✓';btn.classList.add('done');showToast('Prompt berhasil disalin');setTimeout(()=>{btn.textContent=old;btn.classList.remove('done')},1800)}));
+    document.querySelectorAll('.chip').forEach(chip=>chip.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));chip.classList.add('active');const f=chip.dataset.filter;document.querySelectorAll('.card').forEach(c=>c.style.display=f==='all'||c.dataset.cat===f?'block':'none')}));
+    let total=600,left=600,timer=null;const clock=document.querySelector('#clock'),toggle=document.querySelector('#timerToggle');
+    function render(){clock.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0')}
+    function stop(){clearInterval(timer);timer=null;toggle.textContent='Mulai'}
+    toggle.addEventListener('click',()=>{if(timer){stop();return}toggle.textContent='Jeda';timer=setInterval(()=>{if(left>0){left--;render()}else{stop();showToast('Waktu praktik selesai')}},1000)});
+    document.querySelector('#timerReset').addEventListener('click',()=>{stop();left=total=600;render()});document.querySelector('#timerFive').addEventListener('click',()=>{stop();left=total=300;render()});
+    document.querySelector('#copyWork').addEventListener('click',async()=>{const g=document.querySelector('#group').value||'[Nama kelompok]';const a=document.querySelector('#tool').value||'[AI yang digunakan]';const r=document.querySelector('#review').value||'[Belum diisi]';const v=document.querySelector('#revision').value||'[Belum diisi]';await copyText(`Nama kelompok: ${g}\nAI yang digunakan: ${a}\n\nKekuatan dan kekurangan output:\n${r}\n\nRevisi manusia / pesan final:\n${v}`);document.querySelector('#workNotice').textContent='Hasil kelompok sudah disalin. Tempelkan ke Padlet atau formulir kelas.';showToast('Hasil kelompok berhasil disalin')});
+  </script>
+</body>
+</html>
